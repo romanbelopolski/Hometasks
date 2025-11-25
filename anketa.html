@@ -10,8 +10,9 @@ let name;
 let surName;
 let fatherName;
 let age;
-let sex;
+let strSex;
 let pens;
+let boolSex;
 
 do {
    surName = prompt('Ваша фамилия?');
@@ -27,16 +28,16 @@ do {
 
 do {
   age = Number(prompt("Какой возраст? Число должно быть положительное,больше 0 и меньше 118"));
-} while (isNaN(age)||age==0||age<0||age>118);
+} while (isNaN(age)||age<=0||age>118);
 
-sex = confirm('Подтвердите,если ваш пол - "Мужской" \nОтмените,если ваш пол - "Женский"')
-if (sex==true){
-  sex="Мужской"
+boolSex = confirm('Подтвердите,если ваш пол - "Мужской" \nОтмените,если ваш пол - "Женский"')
+if (boolSex==true){
+  strSex="Мужской"
 }
 else{
-  sex="Женский"
+  strSex="Женский"
 };
-if(sex=="Женский"&&age>=58||sex=="Мужской"&&age>=63){
+if(strSex=="Женский"&&age>=58||strSex=="Мужской"&&age>=63){
 pens="Да"
 }
 else{
@@ -47,7 +48,7 @@ let total = `ваше ФИО: ${surName} ${name} ${fatherName}
 ваш возраст в годах: ${age}
 ваш возраст в днях: ${age*365}
 через 5 лет вам будет: ${age+5}
-ваш пол: ${sex}
+ваш пол: ${strSex}
 вы на пенсии: ${pens}
 `;
 alert(total);
