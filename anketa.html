@@ -31,18 +31,8 @@ do {
 } while (isNaN(age)||age<=0||age>118);
 
 boolSex = confirm('Подтвердите,если ваш пол - "Мужской" \nОтмените,если ваш пол - "Женский"')
-if (boolSex==true){
-  strSex="Мужской"
-}
-else{
-  strSex="Женский"
-};
-if(strSex=="Женский"&&age>=58||strSex=="Мужской"&&age>=63){
-pens="Да"
-}
-else{
-  pens="Нет"
-};
+strSex = boolSex?"Мужской":"Женский";
+pens = (!boolSex&&age>=58||boolSex&&age>=63)?"Да":"Нет";
 
 let total = `ваше ФИО: ${surName} ${name} ${fatherName}
 ваш возраст в годах: ${age}
