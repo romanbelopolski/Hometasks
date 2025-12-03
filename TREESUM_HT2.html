@@ -10,17 +10,14 @@
 
 
     function tram(other,sum=0){ 
-            let number;
-            console.log("function: "+sum)       
+            let number; 
     for(let i=0;i<other.length;i++){
         if(typeof other[i]==="object"){
-            console.log("if: "+sum) 
             sum+=tram(other[i])
         }
         else{
         number=other[i];
         sum+=number;
-        console.log("else: "+sum) 
     }
     }
     return sum;
