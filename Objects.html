@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function ObjStorageFunc(){
+    this.drinks ={}
+
+    this.addValue=function(key,value){
+        this.drinks[key]=value;
+    };
+
+    this.getValue=function(key){
+       console.log(this.drinks[key])
+    };
+
+    this.deleteValue=function(key){
+    this.drinks[key]=null;
+    }
+
+
+    this.getKeys=function(){
+        console.log(Object.keys(this.drinks));
+    };
+}
+
+const storage = new ObjStorageFunc()
+storage.addValue("маргарита",{alc:true,receipt:"text"});
+storage.deleteValue("маргарита");
+storage.addValue("трюм",{alc:true,receipt:"text"});
+storage.getKeys();
+storage.getValue("маргарита");
+
+
+    </script>
+</body>
+</html>
