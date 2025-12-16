@@ -15,23 +15,24 @@ function ObjStorageFunc(){
     };
 
     this.getValue=function(key){
-       console.log(this.drinks[key])
+       return this.drinks[key]
     };
 
     this.deleteValue=function(key){
-    this.drinks[key]=null;
+    delete this.drinks[key];
+    return this.drinks.hasOwnProperty(key)
     }
 
 
     this.getKeys=function(){
-        console.log(Object.keys(this.drinks));
+     return  Object.keys(this.drinks);
     };
 }
 
 const storage = new ObjStorageFunc()
 storage.addValue("маргарита",{alc:true,receipt:"text"});
-storage.deleteValue("маргарита");
 storage.addValue("трюм",{alc:true,receipt:"text"});
+storage.deleteValue("маргарита");
 storage.getKeys();
 storage.getValue("маргарита");
 
