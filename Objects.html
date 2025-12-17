@@ -19,9 +19,16 @@ function ObjStorageFunc(){
     };
 
     this.deleteValue=function(key){
-    delete this.drinks[key];
-    return this.drinks.hasOwnProperty(key)
-    }
+        let arr = Object.keys(this.drinks);
+        let value = key;
+        delete this.drinks[key]
+        if(arr.includes(value)){
+            return true
+        }
+        else{
+            return false
+        }
+   }
 
 
     this.getKeys=function(){
@@ -32,7 +39,7 @@ function ObjStorageFunc(){
 const storage = new ObjStorageFunc()
 storage.addValue("маргарита",{alc:true,receipt:"text"});
 storage.addValue("трюм",{alc:true,receipt:"text"});
-storage.deleteValue("маргарита");
+storage.deleteValue("бошка");
 storage.getKeys();
 storage.getValue("маргарита");
 
