@@ -3,47 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Коктейли</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <script>
-function ObjStorageFunc(){
-    this.drinks ={}
-
-    this.addValue=function(key,value){
-        this.drinks[key]=value;
-    };
-
-    this.getValue=function(key){
-       return this.drinks[key]
-    };
-
-    this.deleteValue=function(key){
-        let arr = Object.keys(this.drinks);
-        let value = key;
-        delete this.drinks[key]
-        if(arr.includes(value)){
-            return true
-        }
-        else{
-            return false
-        }
-   }
-
-
-    this.getKeys=function(){
-     return  Object.keys(this.drinks);
-    };
-}
-
-const storage = new ObjStorageFunc()
-storage.addValue("маргарита",{alc:true,receipt:"text"});
-storage.addValue("трюм",{alc:true,receipt:"text"});
-storage.deleteValue("бошка");
-storage.getKeys();
-storage.getValue("маргарита");
-
-
-    </script>
+<button class="button" onclick="setValue()">Ввод информации о напитке</button>
+<button class="button" onclick="getValue()">Получение информации о напитке</button>
+<button class="button" onclick="delValue()">Удаление информации о напитке</button>
+<button class="button" onclick="readValue()">Перечень всех напитков</button>
 </body>
 </html>
