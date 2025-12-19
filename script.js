@@ -1,28 +1,36 @@
 function ObjStorageFunc(){
-    this.drinks ={}
+    this.objStorage ={}
     this.addValue=function(key,value){
-        this.drinks[key]=value;
+        this.objStorage[key]=value;
     };
 
     this.getValue=function(key){
-       return this.drinks[key]
+       return this.objStorage[key]
     };
 
     this.deleteValue=function(key){
-        let arr = Object.keys(this.drinks);
-        let value = key;
-        delete this.drinks[key]
-        if(arr.includes(value)){
+        if(key in this.objStorage){
+            delete this.objStorage[key]
             return true
-        }
-        else{
-            return false
-        }
-   }
+
+        }else{return false}
+    }
+
+//     this.deleteValue=function(key){
+//         let arr = Object.keys(this.objStorage);
+//         let value = key;
+//         delete this.objStorage[key]
+//         if(arr.includes(value)){
+//             return true
+//         }
+//         else{
+//             return false
+//         }
+//    }
 
 
     this.getKeys=function(){
-     return  Object.keys(this.drinks);
+     return  Object.keys(this.objStorage);
     };
 }
 

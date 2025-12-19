@@ -1,33 +1,29 @@
 class ObjStorageClass{
     
     constructor(){
-    this.drinks ={}}
+    this.objStorage ={}}
 
 
 
     addValue(key,value){
-        this.drinks[key]=value;
+        this.objStorage[key]=value;
     };
 
     getValue(key){
-       return this.drinks[key]
+       return this.objStorage[key]
     };
 
-    deleteValue(key){
-        let arr = Object.keys(this.drinks);
-        let value = key;
-        delete this.drinks[key]
-        if(arr.includes(value)){
+    eleteValue=function(key){
+        if(key in this.objStorage){
+            delete this.objStorage[key]
             return true
-        }
-        else{
-            return false
-        }
-   }
+
+        }else{return false}
+    }
 
 
     getKeys(){
-     return  Object.keys(this.drinks);
+     return  Object.keys(this.objStorage);
     };
 }
 
