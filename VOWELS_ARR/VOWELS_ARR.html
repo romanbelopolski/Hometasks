@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const fruits =prompt("Введите слово")
+
+
+function feNew(text){
+text = text.toLowerCase();
+let newArr = text.split('');
+
+let sum =0;
+function calc(v){
+    let glassnArr = ["а","у","о","ы","и","э","я","ю","ё",'е'];
+    if(glassnArr.includes(v)){
+    sum++; 
+    }
+}
+newArr.forEach(calc);
+return sum;
+}
+
+function filNew(text){
+  text = text.toLowerCase();
+  let newArr = text.split('');
+  let result;
+  function calc(v){
+    let glassnArr = ["а","у","о","ы","и","э","я","ю","ё",'е'];
+    return glassnArr.includes(v);
+  }
+  result = newArr.filter(calc)
+  return result.length
+}
+
+function redNew(text){
+text = text.toLowerCase();
+let newArr = text.split('');
+let result;
+function calc(r,v,i,a){
+   let glassnArr = ["а","у","о","ы","и","э","я","ю","ё",'е']; 
+   if(glassnArr.includes(v)){
+    return ++r
+   }
+   return r;
+}
+result = newArr.reduce(calc,0)
+return result;
+}
+
+
+console.log(feNew(fruits))
+console.log(filNew(fruits))
+console.log(redNew(fruits))
+    </script>
+</body>
+</html>

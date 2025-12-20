@@ -1,8 +1,0 @@
-body {
-background-image: url("background.jpg");
-}
-
-body > .button {
-  background-color: white;
-  color: black;
-}

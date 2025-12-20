@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ANKETA</title>
+</head>
+<body>
+
+<script>
+let name; 
+let surName;
+let fatherName;
+let age;
+let strSex;
+let pens;
+let boolSex;
+
+do {
+   surName = prompt('Ваша фамилия?');
+} while (isFinite(surName));
+
+do {
+  name = prompt('Ваше имя?');
+} while (isFinite(name));
+
+do {
+  fatherName = prompt('Ваше отчество?');
+} while (isFinite(fatherName));
+
+do {
+  age = Number(prompt("Какой возраст? Число должно быть положительное,больше 0 и меньше 118"));
+} while (isNaN(age)||age<=0||age>118);
+
+boolSex = confirm('Подтвердите,если ваш пол - "Мужской" \nОтмените,если ваш пол - "Женский"')
+strSex = boolSex?"Мужской":"Женский";
+pens = (!boolSex&&age>=58||boolSex&&age>=63)?"Да":"Нет";
+
+let total = `ваше ФИО: ${surName} ${name} ${fatherName}
+ваш возраст в годах: ${age}
+ваш возраст в днях: ${age*365}
+через 5 лет вам будет: ${age+5}
+ваш пол: ${strSex}
+вы на пенсии: ${pens}
+`;
+alert(total);
+</script>
+
+</body>
+</html>
