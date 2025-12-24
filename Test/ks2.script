@@ -1,0 +1,16 @@
+
+//современный синтаксис создания класс
+class Car {
+  constructor(model) {
+    this.model = model;
+  }
+
+  drive() {
+    console.log("drive");
+  }
+}
+
+//функция конструктор
+function Car(model) {
+  this.model = model;
+}
