@@ -22,6 +22,11 @@ const formDef2=
   {caption:'Зарегистрироваться',kind:'submit'},
 ];
 
+
+
+
+
+
 function createForm(text){
 let arr = text;
 const createForma = document.createElement("form")
@@ -49,43 +54,35 @@ function createTr(){
 }
 
 function per(arr){
+
    let tr = arr;
    for(let i =0;i<tr.length;i++){
-   if(tr[i].kind =='longtext'){
     let createdTr=createTr(); 
     createTd(tr[i].label,createdTr)
     const createTd2 = document.createElement("td");
     createdTr.append(createTd2);
+
+   if(tr[i].kind =='longtext'){
     const createInput = document.createElement("input");
-    createInput.name = "Title"
+    createInput.name = tr[i].name
     createInput.style.width = "453px"
     createTd2.append(createInput);
    }
    else if(tr[i].kind =='number'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
+
     const createInput = document.createElement("input");
-    createInput.name = "Title"
+    createInput.name = tr[i].name
     createInput.style.width = "80px"
     createTd2.append(createInput);
    }
     else if(tr[i].kind =='shorttext'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
+
     const createInput = document.createElement("input");
-    createInput.name = "Title"
+    createInput.name = tr[i].name
     createInput.style.width = "200px"
     createTd2.append(createInput);
    }
     else if(tr[i].kind =='dropdown'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
     const createDD=document.createElement("select")
     createTd2.append(createDD);
     for(let a=0;a<tr[i].variants.length;a++){
@@ -96,14 +93,10 @@ function per(arr){
 }
    }
     else if(tr[i].kind =='radio'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
     for(let a=0;a<tr[i].variants.length;a++){
     const createInput=document.createElement("input")
     createInput.value= tr[i].variants[a].value;
-    createInput.name = "public"
+    createInput.name = tr[i].name
     createInput.type = "radio"
     createTd2.append(createInput)
     const createSp=document.createElement("span")
@@ -111,31 +104,20 @@ function per(arr){
     createTd2.append(createSp)
 }
    }
-       else if(tr[i].kind =='check'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
+    else if(tr[i].kind =='check'){
     const createInput = document.createElement("input");
-    createInput.name = "Title"
+    createInput.name = tr[i].name
     createInput.type = "checkbox"
     createTd2.append(createInput);
    }
     else if(tr[i].kind =='memo'){
-    let createdTr=createTr(); 
-    createTd(tr[i].label,createdTr)
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
     const createTa = document.createElement("textarea");
-    createTa.name = "article"
+    createTa.name = tr[i].name
     createTa.style.width = "608px"
     createTa.style.height = "50px"
     createTd2.append(createTa);
    }
-       else if(tr[i].kind =='submit'){
-    let createdTr=createTr(); 
-    const createTd2 = document.createElement("td");
-    createdTr.append(createTd2);
+    else if(tr[i].kind =='submit'){
     const createInput=document.createElement("input")
     createInput.type="submit"
     createInput.value=tr[i].caption
