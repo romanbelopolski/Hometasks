@@ -17,16 +17,18 @@
 
         console.log( 'цветов: ' + colorsCount );
         for ( let i=1; i<=colorsCount; i++ ) {
-            const n=randomDiap(1,7);
-            const colorName=colors[n];
-             if(colorName in newColors){
-            i--;
-            continue;
+            let n;
+            let colorName;
+            let i = 0;
+            do { 
+            n=randomDiap(1,7);
+            colorName=colors[n];
+            i++;
+            console.log(i)
         }
-         else{            
+        while(colorName in newColors)
             newColors[colorName]=true
             console.log(colorName);}
-        }
     }
 
     mood(3);
