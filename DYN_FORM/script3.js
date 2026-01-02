@@ -29,7 +29,7 @@ const formDef2=
 
 function createForm(text){
 let arr = text;
-const createForma = document.createElement("form")
+const forma = document.createElement("form")
 createForma.method= "POST";
 createForma.action= "TestForm.php"
 document.body.append(createForma);

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name='INFO' method="POST" action="https://fe.it-academy.by/TestForm.php" target="_self">
+<table class="Table">
+<tbody>
+    
+
+    <tr>
+        <td>Разработчики:</td>
+        <td><input type="text" name="devs" style="width: 453px"><span class="Error1"></span></td>
+    </tr>
+
+    <tr>
+        <td>Название сайта:</td>
+        <td><input type="text" name="sitename" style="width: 453px"><span class="Error2"></span></td>
+
+    </tr>
+
+    <tr>
+        <td>URL сайта:</td>
+        <td><input type="text" name="urlpath" style="width: 300px"><span class="Error3"></span></td>
+    </tr>
+
+    <tr>
+        <td>Дата запуска сайта:</td>
+        <td><input type="date" name="datetime" style="width: 80px"><span class="Error4"></span></td>
+    </tr>
+
+    <tr>
+        <td>Посетителей в сутки:</td>
+        <td><input type="text" name="amountpeople" style="width: 80px"><span class="Error5"></span></td>
+    </tr>
+
+    <tr>
+        <td>E-mail для связи:</td>
+        <td><input type="text" name="emailuser" style="width: 200px"><span class="Error6"></span></td>
+    </tr>
+
+    <tr>
+        <td>Рубрика каталога:</td>
+        <td style="padding-left: 1px">
+            <select name="catalog" style="width: 150px; margin-left: 2px">
+                <option value="1">здоровье</option>
+                <option value="2">домашний уют</option>
+                <option value="3" selected="">бытовая техника</option>
+            </select>
+            <span class="Error7"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Размещение:</td>
+        <td style="padding: 2px 0 2px 0">
+            <input type="radio" name="Publish" value="1"><span class="Radio1">бесплатное</span>
+            <input type="radio" name="Publish" value="2"><span class="Radio2">платное</span>  
+            <input type="radio" name="Publish" value="3"><span class="Radio3">VIP</span>
+            <span class="Error8" ></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 2px 0 3px 3px">Разрешить&nbsp;отзывы:</td>
+        <td><input type="checkbox" name="checkboxes"><span class="Error9"></span></td>
+    </tr>
+
+    <tr>
+        <td colspan="2">Описание сайта:<br>
+            <textarea name="article" style="width: 608px; height: 50px"></textarea>
+            <span class="Error10"></span>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Опубликовать"></td>
+    </tr>
+</tbody>
+</table>
+</form>
+<script src="script2.js"></script>
+</body>
+</html>
