@@ -1,330 +1,327 @@
+// определение элементов и определение обработчиков
+
 const formTag=document.forms.INFO;
 
 const devsField=formTag.elements.devs;
-devsField.addEventListener('focusout',checkDevsField,false);
+devsField.addEventListener('focusout',checkDevs,false);
 
 const sitenameField=formTag.elements.sitename;
-sitenameField.addEventListener('focusout',checkSitenameField,false);
+sitenameField.addEventListener('focusout',checkSitename,false);
 
 const urlpathField=formTag.elements.urlpath;
-urlpathField.addEventListener('focusout',checkUrlpathField,false);
+urlpathField.addEventListener('focusout',checkUrlpath,false);
 
 const datetimeField=formTag.elements.datetime;
-datetimeField.addEventListener('focusout',checkDatetimeField,false);
+datetimeField.addEventListener('focusout',checkDatetime,false);
 
 const amountpeopleField=formTag.elements.amountpeople;
-amountpeopleField.addEventListener('focusout',checkAmountpeopleField,false);
+amountpeopleField.addEventListener('focusout',checkAmountpeople,false);
 
 const emailuserField=formTag.elements.emailuser;
-emailuserField.addEventListener('focusout',checkEmailuserField,false);
+emailuserField.addEventListener('focusout',checkEmailuser,false);
 
 const catalogField=formTag.elements.catalog;
-catalogField.addEventListener('focusout',checkCatalogField,false);
+catalogField.addEventListener('focusout',checkCatalog,false);
 
 const publishField=formTag.elements.Publish;
 for (const radio of publishField) {
-  radio.addEventListener('change', checkPublishField);
+  radio.addEventListener('change', checkPublish);
 }
 
 const checkboxesField=formTag.elements.checkboxes;
-checkboxesField.addEventListener('change',checkcheckboxesField,false);
+checkboxesField.addEventListener('change',checkcheckboxes,false);
 
 const articleField=formTag.elements.article;
-articleField.addEventListener('focusout',checkarticleField,false);
+articleField.addEventListener('focusout',checkarticle,false);
+
+formTag.addEventListener('submit',submitForm,false);
 
 
+// Объявление функций
 
-function checkDevsField(){
+function showError(error,errorMessage){
+    error.textContent = errorMessage;
+    error.style.color="red"
+}
+
+function checkDevs(){
 const value=devsField.value;
 let error = document.querySelector('.Error1')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    devsField.focus()
-    devsField.blur()
-    return true;
-    // event.preventDefault()
+    showError(error,errorMessage)
+    return false;
 }
 else if (value.length>30){
     let errorMessage ="Поле не может больше 30 символов"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    devsField.focus()
-    devsField.blur()
-    return true;
+    showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkSitenameField(event){
+function checkSitename(){
 const value=sitenameField.value;
 let error = document.querySelector('.Error2')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    sitenameField.focus()
-    sitenameField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>30){
     let errorMessage ="Поле не может больше 30 символов"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    sitenameField.focus()
-    sitenameField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkUrlpathField(event){
+function checkUrlpath(){
 const value=urlpathField.value;
 let error = document.querySelector('.Error3')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    urlpathField.focus()
-    urlpathField.blur()
-    return true
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>30){
     let errorMessage ="Поле не может больше 30 символов"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    urlpathField.focus()
-    urlpathField.blur()
-    return true
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkDatetimeField(event){
+function checkDatetime(){
 const value=datetimeField.value;
 let error = document.querySelector('.Error4')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    datetimeField.focus()
-    datetimeField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>10){
     let errorMessage ="Поле не может больше 10 символов"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    datetimeField.focus()
-    datetimeField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkAmountpeopleField(event){
+function checkAmountpeople(){
 const value=amountpeopleField.value;
 let error = document.querySelector('.Error5')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    amountpeopleField.focus()
-    amountpeopleField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>10){
     let errorMessage ="Поле не может больше 10 символов"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    amountpeopleField.focus()
-    amountpeopleField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (isNaN(value)){
     let errorMessage ="Поле не может быть текстом"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    amountpeopleField.focus()
-    amountpeopleField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkEmailuserField(event){
+function checkEmailuser(){
 const value=emailuserField.value;
 let error = document.querySelector('.Error6')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    emailuserField.focus()
-    emailuserField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>55){
     let errorMessage ="Поле не может быть больше 55 символов"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-        emailuserField.focus()
-    emailuserField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (!value.includes("@")||(!value.endsWith(".com")&&!value.endsWith(".by")&&!value.endsWith(".ru"))){
     let errorMessage ="Поле не содержит '@' или не заканчивается на  '.com','.ru','.by'"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-        emailuserField.focus()
-    emailuserField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkCatalogField(event){
+function checkCatalog(){
 const value=catalogField.value;
 let error = document.querySelector('.Error7')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    catalogField.focus()
-    catalogField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value==3){
     let errorMessage ="Опция 'Бытовая техника' не валидное значение"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    catalogField.focus()
-    catalogField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkPublishField(event){
+function checkPublish(){
 const value=publishField.value;
 let error = document.querySelector('.Error8')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    publishField.focus()
-    publishField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value==3){
     let errorMessage ="Опция 'VIP' не валидное значение"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    publishField.focus()
-    publishField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkcheckboxesField(event){
+function checkcheckboxes(){
 const value=checkboxesField.value;
 let error = document.querySelector('.Error9')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    checkboxesField.focus()
-    checkboxesField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (checkboxesField.checked==false){
     let errorMessage ="Чекбокс не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red" 
-    checkboxesField.focus()
-    checkboxesField.blur()
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-function checkarticleField(event){
+function checkarticle(){
 const value=articleField.value;
 let error = document.querySelector('.Error10')
 if(value===""){
     let errorMessage ="Поле не может быть пустым"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else if (value.length>100){
     let errorMessage ="Поле не может содержать более 100 символов"
-    error.textContent = errorMessage;
-    error.style.color="red"
-    return true;
+showError(error,errorMessage)
+    return false;
 }
 else{
     error.textContent = "";
     error.style.color=""
-    return false;
+    return true;
 }
 }
 
-
-formTag.addEventListener('submit',submitForm,false);
+// объявление сабмит формы
 
 function submitForm(event){
-const formTag=document.forms.INFO;
 
-checkarticleField(event)
-checkcheckboxesField(event)
-checkPublishField(event)
-checkCatalogField(event)
-checkEmailuserField(event)
-checkAmountpeopleField(event)
-checkDatetimeField(event)
-checkUrlpathField(event)
-checkSitenameField(event)
-checkDevsField(event)
+    let count =0;
 
+    if(!checkarticle()){
+        articleField.focus()
+        // event.preventDefault()
+        ++count;
+    }
 
+    if(!checkcheckboxes()){
+        checkboxesField.focus()
+        // event.preventDefault()
+        ++count;
+    }
 
+    if(!checkPublish()){
+        publishField[0].focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkCatalog()){
+        catalogField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkEmailuser()){
+        emailuserField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkAmountpeople()){
+        amountpeopleField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkDatetime()){
+        datetimeField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkUrlpath()){
+        urlpathField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkSitename()){
+        sitenameField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(!checkDevs()){
+        devsField.focus()
+        // event.preventDefault()
+        ++count;
+    }
+
+    if(count>0){
+      event.preventDefault()  
+    }
+    
 }
-
