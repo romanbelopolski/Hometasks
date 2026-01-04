@@ -34,7 +34,7 @@ articleField.addEventListener('focusout',checkarticleField,false);
 
 
 
-function checkDevsField(event){
+function checkDevsField(){
 const value=devsField.value;
 let error = document.querySelector('.Error1')
 if(value===""){
@@ -292,16 +292,12 @@ if(value===""){
     let errorMessage ="Поле не может быть пустым"
     error.textContent = errorMessage;
     error.style.color="red"
-    articleField.focus()
-    articleField.blur()
     return true;
 }
 else if (value.length>100){
     let errorMessage ="Поле не может содержать более 100 символов"
     error.textContent = errorMessage;
     error.style.color="red"
-    articleField.focus()
-    articleField.blur() 
     return true;
 }
 else{
