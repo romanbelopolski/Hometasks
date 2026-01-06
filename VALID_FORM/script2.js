@@ -21,7 +21,7 @@ const emailuserField=formTag.elements.emailuser;
 emailuserField.addEventListener('focusout',checkEmailuser,false);
 
 const catalogField=formTag.elements.catalog;
-catalogField.addEventListener('focusout',checkCatalog,false);
+catalogField.addEventListener('click',checkCatalog,false);
 
 const publishField=formTag.elements.Publish;
 for (const radio of publishField) {
