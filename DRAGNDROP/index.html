@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body style='min-height: 100vh'>
+<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg'>
+<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100 style='vertical-align: 20px'>
+<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150>
+<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px'>
+
+<script>
+      window.addEventListener('load',documentReady,false);
+      function documentReady() { 
+      const images = document.querySelectorAll('img');
+for (let i = 0; i < images.length; i++) {
+    const img = images[i];
+    
+    const leftPos = img.offsetLeft;
+    const topPos = img.offsetTop;
+
+
+    img.style.left =leftPos + 'px';
+    img.style.top = topPos + 'px';
+    
+
+ 
+  } 
+  
+  for (let i = 0; i < images.length; i++) {
+    const img = images[i];
+    img.style.position = 'absolute';}
+
+    for (let i = 0; i < images.length; i++) {
+    const img = images[i];
+    console.log("Координаты и позиция картинки "+i+ "  "+  img.style.left + "  "+ img.style.top+"  "+ img.style.position)
+}
+}  
+
+</script>
+
+
+
+  </body>
+</html>
