@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body style='min-height: 100vh'>
+<img src='http://fe.it-academy.by/Sites/0000007/sax.jpg'>
+<img src='http://fe.it-academy.by/Sites/0000007/Yin_and_Yang.png' width=100 style='vertical-align: 20px'>
+<img src='http://fe.it-academy.by/Sites/0000007/Man-and-woman.png' width=150>
+<img src='http://fe.it-academy.by/Sites/0000007/No_smoking.png' style='padding-left: 50px'>
+
+<script>
+      window.addEventListener('load',documentReady,false);
+
+
+      function documentReady() { 
+
+      const images = document.querySelectorAll('img');
+      const positions = [];
+      let maxIndex =images.length;
+
+
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        positions[i] = { left:img.offsetLeft,top:img.offsetTop}
+      } 
+
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        img.style.position = 'absolute';
+        img.style.left = positions[i].left + 'px';
+        img.style.top  = positions[i].top  + 'px';
+      }
+
+      let imageMoving;
+      let moving = false;
+      let posClickX = 0;
+      let posClickY = 0;
+
+
+
+
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        img.addEventListener('mousedown', mouseDownClick,false)
+      }
+
+      document.addEventListener('mousemove', mouseMoveClick,false)
+      document.addEventListener('mouseup', mouseUpClick,false)
+
+
+      function mouseDownClick(event) {
+        event.preventDefault();
+        imageMoving = event.currentTarget;
+        moving = true;
+        const posImage = imageMoving.getBoundingClientRect();
+        posClickX = event.clientX - posImage.left;
+        posClickY = event.clientY - posImage.top;
+        imageMoving.style.cursor = 'grabbing';
+        imageMoving.style.zIndex = ++maxIndex;
+    };
+  
+
+ 
+    function mouseMoveClick(event) {
+      event.preventDefault();
+      if (!moving) return;
+      imageMoving.style.left = (event.clientX - posClickX) + 'px';
+      imageMoving.style.top  = (event.clientY - posClickY) + 'px';
+    };
+
+
+    function mouseUpClick(event) {
+      event.preventDefault();
+      if (!moving) return;
+      moving = false;
+      imageMoving.style.cursor = 'default';
+      imageMoving = null;
+    };
+  }
+</script>
+
+
+
+  </body>
+</html>
