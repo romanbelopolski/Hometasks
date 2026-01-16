@@ -13,32 +13,74 @@
 
 <script>
       window.addEventListener('load',documentReady,false);
+
+
       function documentReady() { 
+
       const images = document.querySelectorAll('img');
-for (let i = 0; i < images.length; i++) {
-    const img = images[i];
-    
-    const leftPos = img.offsetLeft;
-    const topPos = img.offsetTop;
+      const positions = [];
+      let maxIndex =images.length;
 
 
-    img.style.left =leftPos + 'px';
-    img.style.top = topPos + 'px';
-    
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        positions[i] = { left:img.offsetLeft,top:img.offsetTop}
+      } 
+
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        img.style.position = 'absolute';
+        img.style.left = positions[i].left + 'px';
+        img.style.top  = positions[i].top  + 'px';
+      }
+
+
+      let draggedImage = null;
+      let dragging = false;
+      let shiftX = 0;
+      let shiftY = 0;
+
+
+
+
+      for (let i = 0; i < images.length; i++) {
+        const img = images[i];
+        img.addEventListener('mousedown', mouseDownClick,false)
+      }
+
+      document.addEventListener('mousemove', mouseMoveClick,false)
+      document.addEventListener('mouseup', mouseUpClick,false)
+
+
+      function mouseDownClick(event) {
+        event.preventDefault();
+        draggedImage = event.currentTarget;
+        dragging = true;
+        const rect = draggedImage.getBoundingClientRect();
+        shiftX = event.clientX - rect.left;
+        shiftY = event.clientY - rect.top;
+        draggedImage.style.cursor = 'grabbing';
+        draggedImage.style.zIndex = ++maxIndex;
+    };
+  
 
  
-  } 
-  
-  for (let i = 0; i < images.length; i++) {
-    const img = images[i];
-    img.style.position = 'absolute';}
+    function mouseMoveClick(event) {
+      event.preventDefault();
+      if (!dragging) return;
+      draggedImage.style.left = (event.clientX - shiftX) + 'px';
+      draggedImage.style.top  = (event.clientY - shiftY) + 'px';
+    };
 
-    for (let i = 0; i < images.length; i++) {
-    const img = images[i];
-    console.log("Координаты и позиция картинки "+i+ "  "+  img.style.left + "  "+ img.style.top+"  "+ img.style.position)
-}
-}  
 
+    function mouseUpClick(event) {
+      event.preventDefault();
+      if (!dragging) return;
+      dragging = false;
+      draggedImage.style.cursor = 'default';
+      draggedImage = null;
+    };
+  }
 </script>
 
 
