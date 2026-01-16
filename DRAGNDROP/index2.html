@@ -35,10 +35,10 @@
       }
 
 
-      let draggedImage = null;
-      let dragging = false;
-      let shiftX = 0;
-      let shiftY = 0;
+      // let draggedImage = null;
+      let moving = false;
+      let posClickX = 0;
+      let posClickY = 0;
 
 
 
@@ -54,31 +54,31 @@
 
       function mouseDownClick(event) {
         event.preventDefault();
-        draggedImage = event.currentTarget;
-        dragging = true;
-        const rect = draggedImage.getBoundingClientRect();
-        shiftX = event.clientX - rect.left;
-        shiftY = event.clientY - rect.top;
-        draggedImage.style.cursor = 'grabbing';
-        draggedImage.style.zIndex = ++maxIndex;
+        imageMoving = event.currentTarget;
+        moving = true;
+        const posImage = imageMoving.getBoundingClientRect();
+        posClickX = event.clientX - posImage.left;
+        posClickY = event.clientY - posImage.top;
+        imageMoving.style.cursor = 'grabbing';
+        imageMoving.style.zIndex = ++maxIndex;
     };
   
 
  
     function mouseMoveClick(event) {
       event.preventDefault();
-      if (!dragging) return;
-      draggedImage.style.left = (event.clientX - shiftX) + 'px';
-      draggedImage.style.top  = (event.clientY - shiftY) + 'px';
+      if (!moving) return;
+      imageMoving.style.left = (event.clientX - posClickX) + 'px';
+      imageMoving.style.top  = (event.clientY - posClickY) + 'px';
     };
 
 
     function mouseUpClick(event) {
       event.preventDefault();
-      if (!dragging) return;
-      dragging = false;
-      draggedImage.style.cursor = 'default';
-      draggedImage = null;
+      if (!moving) return;
+      moving = false;
+      imageMoving.style.cursor = 'default';
+      imageMoving = null;
     };
   }
 </script>
