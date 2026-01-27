@@ -30,12 +30,12 @@ const formDef2=
 function createForm(text){
 let arr = text;
 const forma = document.createElement("form")
-createForma.method= "POST";
-createForma.action= "TestForm.php"
-document.body.append(createForma);
+forma.method= "POST";
+forma.action= "TestForm.php"
+document.body.append(forma);
 const createTable = document.createElement("table")
 createTable.className="Table";
-createForma.append(createTable)
+forma.append(createTable)
 const createTbody = document.createElement("tbody")
 createTable.append(createTbody)
 
