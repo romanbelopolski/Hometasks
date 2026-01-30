@@ -80,6 +80,7 @@ function sendDiam(eo) {
         pointCenter.style.left = (pointX - widthChild / 2) + "px";
         pointCenter.style.top = (pointY - heightChild / 2) + "px";
         pointCenter.innerText = i;
+        pointCenter.style.fontSize = (diametr / 15) + "px";
 
         // Добавление элемента часа на дисплей часов
         clockBackground.append(pointCenter);
@@ -153,11 +154,11 @@ function sendDiam(eo) {
         let seconds = now.getSeconds();
         let minutes = now.getMinutes();
         let hours = now.getHours() % 24;
-
+// Создание движения часов
         let secondDeg = seconds * 6;
         let minuteDeg = minutes * 6 + seconds * 0.1;
         let hourDeg   = hours * 30 + minutes * 0.5;
-
+ 
         secondArrow.style.transform = `rotate(${secondDeg}deg)`;
         minuteArrow.style.transform = `rotate(${minuteDeg}deg)`;
         hourArrow.style.transform   = `rotate(${hourDeg}deg)`;
