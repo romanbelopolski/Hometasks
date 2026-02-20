@@ -63,22 +63,18 @@ svg.append(clockBackground);
 
         // создаём маленький круг
         const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-
         dot.setAttribute("cx", x);
         dot.setAttribute("cy", y);
         dot.setAttribute("r", radius/10);
         dot.setAttribute("fill", "green");
+
         //создание элемента текста
         const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
         text.textContent = i;
         text.setAttribute("x", x);
         text.setAttribute("y", y);
-
-        // центрирование текста
         text.setAttribute("text-anchor", "middle");
         text.setAttribute("dominant-baseline", "middle");
-        // установление цвета и размера
         text.setAttribute("font-size", radius / 10);
         text.setAttribute("fill", "black");
 
@@ -89,13 +85,10 @@ svg.append(clockBackground);
 // функция создания стрелки
 function createHand(cx, cy, length, width, color) {
 const hand = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
 hand.setAttribute("x1", cx);
 hand.setAttribute("y1", cy);
-
 hand.setAttribute("x2", cx);
 hand.setAttribute("y2", cy - length);
-
 hand.setAttribute("stroke", color);
 hand.setAttribute("stroke-width", width);
 hand.setAttribute("stroke-linecap", "round");
@@ -130,7 +123,7 @@ function rotateHand(hand, angle, cx, cy) {
 
 //функция обновления часов
 function updateClock() {
-    const now = new Date();
+const now = new Date();
 
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
@@ -151,7 +144,6 @@ function updateClock() {
     digitalClock.textContent = `${h}:${m}:${s}`;
 
     console.log(`${h}:${m}:${s}`)
-
 
 }
 

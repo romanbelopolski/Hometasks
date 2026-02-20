@@ -13,7 +13,7 @@ class ObjStorageClass{
        return this.objStorage[key]
     };
 
-    eleteValue=function(key){
+    deleteValue=function(key){
         if(key in this.objStorage){
             delete this.objStorage[key]
             return true

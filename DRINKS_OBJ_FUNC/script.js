@@ -15,20 +15,6 @@ function ObjStorageFunc(){
 
         }else{return false}
     }
-
-//     this.deleteValue=function(key){
-//         let arr = Object.keys(this.objStorage);
-//         let value = key;
-//         delete this.objStorage[key]
-//         if(arr.includes(value)){
-//             return true
-//         }
-//         else{
-//             return false
-//         }
-//    }
-
-
     this.getKeys=function(){
      return  Object.keys(this.objStorage);
     };
