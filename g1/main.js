@@ -1,118 +1,74 @@
-const svg = document.getElementById("app");
+const divBackGround = document.createElement("div");
+divBackGround.id = "game-background";
+document.body.append(divBackGround);
 
-const STATES = {
-  MENU: "menu",
-  PLAYING: "playing"
-};
+const svgNS = "http://www.w3.org/2000/svg";
+const svg = document.createElementNS(svgNS, "svg");
+svg.setAttribute("width", "800");
+svg.setAttribute("height", "500");
+svg.setAttribute("viewBox", "0 0 800 500");
+svg.setAttribute("id", "game-svg");
+divBackGround.appendChild(svg);
 
-let currentState = STATES.MENU;
 
-function setState(state) {
-  currentState = state;
-  svg.innerHTML = "";
+const group = document.createElementNS(svgNS, "g");
+group.setAttribute("id","duck")
+svg.appendChild(group);
 
-  if (state === STATES.MENU) {
-    createMenu();
+const ellipse = document.createElementNS(svgNS, "ellipse");
+ellipse.setAttribute("id","bodyduck")
+ellipse.setAttribute("cx", "0");
+ellipse.setAttribute("cy", "0");
+ellipse.setAttribute("rx", "70");
+ellipse.setAttribute("ry", "50");
+ellipse.setAttribute("fill", "black");
+group.appendChild(ellipse);
+
+const circle = document.createElementNS(svgNS, "circle");
+circle.setAttribute("id","headduck")
+circle.setAttribute("cx", "-60");
+circle.setAttribute("cy", "-25");
+circle.setAttribute("r", "30");
+circle.setAttribute("fill", "brown");
+group.appendChild(circle);
+
+
+let posx = -150;
+let posy = 200;
+
+let speed = 5;
+
+
+function animate(){
+  posx+=speed;
+  if (posx > 850){
+    posx = -150;
   }
 
-  if (state === STATES.PLAYING) {
-    createGamePlaceholder();
-  }
+group.setAttribute("transform", `translate(${posx} ${posy})`);
+requestAnimationFrame(animate)
 }
 
-setState(STATES.MENU);
+animate();
 
 
-function createMenu() {
-  const ns = "http://www.w3.org/2000/svg";
-
-  // фон
-  const bg = document.createElementNS(ns, "rect");
-  bg.setAttribute("width", 1280);
-  bg.setAttribute("height", 720);
-  bg.setAttribute("fill", "#87CEEB");
-  svg.appendChild(bg);
-
-  // заголовок
-  const title = document.createElementNS(ns, "text");
-  title.setAttribute("x", 640);
-  title.setAttribute("y", 200);
-  title.setAttribute("text-anchor", "middle");
-  title.setAttribute("font-size", 80);
-  title.setAttribute("fill", "white");
-  title.setAttribute("opacity", 0);
-  title.textContent = "Duck Shooter";
-  svg.appendChild(title);
-
-  // плавное появление
-  setTimeout(() => {
-    title.setAttribute("opacity", 1);
-  }, 50);
-
-  createButton("START GAME", 640, 400, () => {
-    setState(STATES.PLAYING);
-  });
-
-  createButton("LEADERBOARD", 640, 500, () => {
-    alert("Тут будет таблица рекордов");
-  });
-}
+let score = 0;
 
 
-
-function createButton(text, x, y, onClick) {
-  const ns = "http://www.w3.org/2000/svg";
-
-  const group = document.createElementNS(ns, "g");
-  group.setAttribute("transform", `translate(${x}, ${y})`);
-  group.style.cursor = "pointer";
-
-  const rect = document.createElementNS(ns, "rect");
-  rect.setAttribute("x", -200);
-  rect.setAttribute("y", -40);
-  rect.setAttribute("width", 400);
-  rect.setAttribute("height", 80);
-  rect.setAttribute("rx", 20);
-  rect.setAttribute("fill", "#2E8B57");
-  rect.setAttribute("transition", "0.3s");
-
-  const label = document.createElementNS(ns, "text");
-  label.setAttribute("text-anchor", "middle");
-  label.setAttribute("dominant-baseline", "middle");
-  label.setAttribute("font-size", 36);
-  label.setAttribute("fill", "white");
-  label.textContent = text;
-
-  group.appendChild(rect);
-  group.appendChild(label);
-  svg.appendChild(group);
-
-  // hover-анимация
-  group.addEventListener("mouseenter", () => {
-    rect.setAttribute("fill", "#3CB371");
-    group.setAttribute("transform", `translate(${x}, ${y}) scale(1.05)`);
-  });
-
-  group.addEventListener("mouseleave", () => {
-    rect.setAttribute("fill", "#2E8B57");
-    group.setAttribute("transform", `translate(${x}, ${y}) scale(1)`);
-  });
-
-  group.addEventListener("click", onClick);
-}
+const scoreText = document.createElementNS(svgNS, "text");
+scoreText.setAttribute("x", "20");
+scoreText.setAttribute("y", "40");
+scoreText.setAttribute("fill", "white");
+scoreText.setAttribute("font-size", "30");
+scoreText.textContent = `Score: ${score}`;
+svg.appendChild(scoreText);
 
 
+group.addEventListener("click", function() {
+  score++;
+  scoreText.textContent = "Score: " + score;
 
-function createGamePlaceholder() {
-  const ns = "http://www.w3.org/2000/svg";
-
-  const text = document.createElementNS(ns, "text");
-  text.setAttribute("x", 640);
-  text.setAttribute("y", 360);
-  text.setAttribute("text-anchor", "middle");
-  text.setAttribute("font-size", 60);
-  text.setAttribute("fill", "white");
-  text.textContent = "GAME STARTED";
-
-  svg.appendChild(text);
-}
+  // вернуть утку налево
+  posx = -150;
+  posy = Math.random() * 350 + 50;
+});
